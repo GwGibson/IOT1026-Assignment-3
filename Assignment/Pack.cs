@@ -31,21 +31,21 @@ public class Pack
 
     // This is called a getter
 
-//Gets the current maximum count of items that the pack can hold
-//<returns>The maximum count of items.</returns>
+    //Gets the current maximum count of items that the pack can hold
+    //<returns>The maximum count of items.</returns>
     public int GetMaxCount()
     {
         return _maxCount;
     }
-//Gets the current maximum volume that the pack can hold
-//<returns>The maximum volume of the pack.</returns>
+    //Gets the current maximum volume that the pack can hold
+    //<returns>The maximum volume of the pack.</returns>
     public float GetVolume()
     {
         return _currentVolume;
     }
-//Adds the inventory item to the pack
-//<param name="item">The inventory item to add.</param>
-//<returns>True if the item was added successfully,false otherwise.</returns>
+    //Adds the inventory item to the pack
+    //<param name="item">The inventory item to add.</param>
+    //<returns>True if the item was added successfully,false otherwise.</returns>
     public bool Add(InventoryItem item)
     {
         // In the `Add` method, check if adding the item would exceed the pack's 
@@ -61,11 +61,11 @@ public class Pack
         float volume = item.GetVolume();
         if (_currentCount < _maxCount && _currentWeight + weight <= _maxWeight && _currentVolume + volume <= _maxVolume)
         {
-        _items[_currentCount++] = item;
-        _currentCount++;
-        _currentWeight += weight;
-        _currentVolume += volume;
-        return true;
+            _items[_currentCount++] = item;
+            _currentCount++;
+            _currentWeight += weight;
+            _currentVolume += volume;
+            return true;
         }
         return false;
     }
@@ -118,7 +118,7 @@ public abstract class InventoryItem
 // Represent an arrow
 public class Arrow : InventoryItem
 {
-//Initializes a new instance of the <see cref="Arrow"/>class.
+    //Initializes a new instance of the <see cref="Arrow"/>class.
     public Arrow() : base(0.5f, 0.1f) { }
     //Displays information about the arrow
 
@@ -130,9 +130,9 @@ public class Arrow : InventoryItem
 // Represent an bow
 public class Bow : InventoryItem
 {
-//Initializes a new instance of the <see cref="bow"/>class.
+    //Initializes a new instance of the <see cref="bow"/>class.
     public Bow() : base(1f, 4f) { }
-     //Displays information about the bow
+    //Displays information about the bow
     public override string Display()
     {
         return $"A bow with weight {GetWeight()} and volume {GetVolume()}";
@@ -141,9 +141,9 @@ public class Bow : InventoryItem
 // Represent an rope
 public class Rope : InventoryItem
 {
-//Initializes a new instance of the <see cref="rope"/>class.
+    //Initializes a new instance of the <see cref="rope"/>class.
     public Rope() : base(1f, 1.5f) { }
- //Displays information about the Rope
+    //Displays information about the Rope
     public override string Display()
     {
         return $"A rope with weight {GetWeight()} and volume {GetVolume()}";
@@ -152,9 +152,9 @@ public class Rope : InventoryItem
 // Represent an Water
 public class Water : InventoryItem
 {
-//Initializes a new instance of the <see cref="water"/>class.
+    //Initializes a new instance of the <see cref="water"/>class.
     public Water() : base(2f, 3f) { }
-     //Displays information about the Water
+    //Displays information about the Water
     public override string Display()
     {
         return $"Water with weight {GetWeight()} and volume {GetVolume()}";
@@ -163,9 +163,9 @@ public class Water : InventoryItem
 // Represent an Food
 public class Food : InventoryItem
 {
-//Initializes a new instance of the <see cref="food"/>class.
+    //Initializes a new instance of the <see cref="food"/>class.
     public Food() : base(1f, 0.5f) { }
-  //Displays information about the food
+    //Displays information about the food
     public override string Display()
     {
         return $"Yummy food with weight {GetWeight()} and volume {GetVolume()}";
@@ -174,9 +174,9 @@ public class Food : InventoryItem
 // Represent an sword
 public class Sword : InventoryItem
 {
-//Initializes a new instance of the <see cref="sword"/>class.
+    //Initializes a new instance of the <see cref="sword"/>class.
     public Sword() : base(5f, 3f) { }
- //Displays information about the Sword
+    //Displays information about the Sword
     public override string Display()
     {
         return $"A sharp sword with weight {GetWeight()} and volume {GetVolume()}";
