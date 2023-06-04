@@ -13,6 +13,7 @@
 
 # IOT1026-Assignment-3
 Write a description of the project here and don't forget to update the badges.  
+        The goal  of Assignment 3 is to create a functional system to manage a pack that has constraints on the number of items it can hold, its maximum volume, and its maximum weight.
 
 [Assignment Instructions](docs/instructions.md)  
 [How to start coding](docs/how-to-use.md)  
