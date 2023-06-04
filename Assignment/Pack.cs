@@ -51,21 +51,31 @@ public class Pack
         // Do your logic to ensure the item can be added
         float weight = item.GetWeight();
         float volume = item.GetVolume();
-        if (volume <= _maxVolume)
+        if(weight <0 || volume <0)
         {
-            _currentWeight += weight;
-            _currentVolume += volume;
-            _items[_currentCount++] = item;
-            return true;
+            return false;
         }
-        return false;
+        if (_items.Count + 1 > GetMaxCount{} || GetWeight{} + weight > GetMaxWeight{} || GetVolume{} + volume > GetMaxVolume())
+        {
+            return false;
+                
+        }
+        _item.Add(item);
+        _currentWeight += weight;
+        _currentVolume += volume;
+        return true;
 
     }
 
-    // Implement this class
+    //<summary>
+    //A string representation of a pack is being returned
+    //<summary>
+    //<returns>A string reprsentation of the pack indicating the current item count, weight and volume <returns>
     public override string ToString()
     {
-        throw new NotImplementedException();
+        string result = $"Pack is current at {_items.Count}/{GetMaxCount()} items, {GetWeight()}/{GetMaxWeight()} weight, and {GetVolume()}/{GetMaxVolume()} volume
+        return result;
+            
     }
 }
 
@@ -73,7 +83,11 @@ public class Pack
 public abstract class InventoryItem
 {
     private readonly float _volume;
+    
     private readonly float _weight;
+    //<param name="volume">The volume of the item.</param>
+    //<param name="weight">The weight of the item.</param>
+    //Thrown when the volume or weight is less than or equal to zero
 
     protected InventoryItem(float volume, float weight)
     {
@@ -100,62 +114,68 @@ public abstract class InventoryItem
     }
 }
 
-// Implement these classes - each inherits from InventoryItem
-// 1 line of code each - call base class constructor with appropriate arguments
+// Represent an arrow
 public class Arrow : InventoryItem
 {
+//Initializes a new instance of the <see cref="Arrow"/>class.
     public Arrow() : base(0.5f, 0.1f) { }
+    //Displays information about the arrow
 
     public override string Display()
     {
         return $"An arrow with weight {GetWeight()} and volume {GetVolume()}";
     }
 }
-
+// Represent an bow
 public class Bow : InventoryItem
 {
+//Initializes a new instance of the <see cref="bow"/>class.
     public Bow() : base(1f, 4f) { }
-
+     //Displays information about the bow
     public override string Display()
     {
         return $"A bow with weight {GetWeight()} and volume {GetVolume()}";
     }
 }
-
+// Represent an rope
 public class Rope : InventoryItem
 {
+//Initializes a new instance of the <see cref="rope"/>class.
     public Rope() : base(1f, 1.5f) { }
-
+ //Displays information about the Rope
     public override string Display()
     {
         return $"A rope with weight {GetWeight()} and volume {GetVolume()}";
     }
 }
-
+// Represent an Water
 public class Water : InventoryItem
 {
+//Initializes a new instance of the <see cref="water"/>class.
     public Water() : base(2f, 3f) { }
-
+     //Displays information about the Water
     public override string Display()
     {
         return $"Water with weight {GetWeight()} and volume {GetVolume()}";
     }
 }
-
+// Represent an Food
 public class Food : InventoryItem
 {
+//Initializes a new instance of the <see cref="food"/>class.
     public Food() : base(1f, 0.5f) { }
-
+  //Displays information about the food
     public override string Display()
     {
         return $"Yummy food with weight {GetWeight()} and volume {GetVolume()}";
     }
 }
-
+// Represent an sword
 public class Sword : InventoryItem
 {
+//Initializes a new instance of the <see cref="sword"/>class.
     public Sword() : base(5f, 3f) { }
-
+ //Displays information about the Sword
     public override string Display()
     {
         return $"A sharp sword with weight {GetWeight()} and volume {GetVolume()}";
