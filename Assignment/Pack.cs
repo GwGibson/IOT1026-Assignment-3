@@ -1,4 +1,4 @@
-﻿namespace Assignment;
+namespace Assignment;
 
 public class Pack
 {
@@ -11,14 +11,16 @@ public class Pack
     private int _currentCount; // Defaults to 0
     private float _currentVolume;
     private float _currentWeight;
-
-
     // Default constructor sets the maxCount to 10 
     // maxVolume to 20 
     // maxWeight to 30
     public Pack() : this(10, 20, 30) { }
 
     // This constructor is not complete, but it is a good start.
+    //Constructor for the Pack class
+    //<param name= "maxCount">The maximum count of items that the pack can hold.</param>
+    //<param name= "maxVolume">The maximum volume the pack can hold.</param>
+    //<param name= "maxWeight">The maximum weight the pack can hold.</param>
     public Pack(int maxCount, float maxVolume, float maxWeight)
     {
         _items = new InventoryItem[maxCount];
@@ -28,16 +30,22 @@ public class Pack
     }
 
     // This is called a getter
+
+//Gets the current maximum count of items that the pack can hold
+//<returns>The maximum count of items.</returns>
     public int GetMaxCount()
     {
         return _maxCount;
     }
-
+//Gets the current maximum volume that the pack can hold
+//<returns>The maximum volume of the pack.</returns>
     public float GetVolume()
     {
         return _currentVolume;
     }
-
+//Adds the inventory item to the pack
+//<param name="item">The inventory item to add.</param>
+//<returns>True if the item was added successfully,false otherwise.</returns>
     public bool Add(InventoryItem item)
     {
         // In the `Add` method, check if adding the item would exceed the pack's 
@@ -51,20 +59,15 @@ public class Pack
         // Do your logic to ensure the item can be added
         float weight = item.GetWeight();
         float volume = item.GetVolume();
-        if(weight <0 || volume <0)
+        if (_currentCount < _maxCount && _currentWeight + weight <= _maxWeight && _currentVolume + volume <= _maxVolume)
         {
-            return false;
-        }
-        if (_items.Count + 1 > GetMaxCount{} || GetWeight{} + weight > GetMaxWeight{} || GetVolume{} + volume > GetMaxVolume())
-        {
-            return false;
-                
-        }
-        _item.Add(item);
+        _items[_currentCount++] = item;
+        _currentCount++;
         _currentWeight += weight;
         _currentVolume += volume;
         return true;
-
+        }
+        return false;
     }
 
     //<summary>
@@ -73,9 +76,8 @@ public class Pack
     //<returns>A string reprsentation of the pack indicating the current item count, weight and volume <returns>
     public override string ToString()
     {
-        string result = $"Pack is current at {_items.Count}/{GetMaxCount()} items, {GetWeight()}/{GetMaxWeight()} weight, and {GetVolume()}/{GetMaxVolume()} volume
+        string result = $"Pack is current at {_currentCount}/{_maxCount} items, {_currentWeight}/{_maxWeight} weight, and {_currentVolume}/{_maxVolume} volume.";
         return result;
-            
     }
 }
 
@@ -83,7 +85,6 @@ public class Pack
 public abstract class InventoryItem
 {
     private readonly float _volume;
-    
     private readonly float _weight;
     //<param name="volume">The volume of the item.</param>
     //<param name="weight">The weight of the item.</param>
